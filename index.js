@@ -90,6 +90,7 @@ var Help = React.createClass({
   render: function() {
     return (
       <div className="star-chart">
+        <Link href="/">&laquo; Back</Link>
         <h1 className="star-chart-title">HELP</h1>
         <p><small>(These instructions will not help you when floating in outer space. Sorry.)</small></p>
         <p>So we want a <strong>Space ID</strong> and an <strong>API Key Access Token</strong> from you.</p>
@@ -201,6 +202,7 @@ var NavCom = React.createClass({
 
     return (
       <div className="nav-com">
+        <Link href="/">&laquo; Back</Link>
         <h1>{spaceName}</h1>
         {contentTypes}
       </div>
