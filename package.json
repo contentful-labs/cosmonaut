@@ -30,6 +30,7 @@
     "contentful": "^0.1.0",
     "envify": "^1.2.1",
     "react": "^0.10.0-rc1",
+    "react-router-component": "^0.14.0",
     "bluebird": "^1.1.1"
   }
 }

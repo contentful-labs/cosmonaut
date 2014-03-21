@@ -109,8 +109,8 @@ var Help = React.createClass({
           <em>"What?"</em>, you say! Let me show you how to get this in two screenshots:
         </p>
         <ol>
-          <li><a href="/help-space-id.png" target="_blank">Get the Space ID</a></li>
-          <li><a href="/help-api-key-access-token.png" target="_blank">Get the API Key Access Token</a></li>
+          <li><a href="help-space-id.png" target="_blank">Get the Space ID</a></li>
+          <li><a href="help-api-key-access-token.png" target="_blank">Get the API Key Access Token</a></li>
         </ol>
         <h2>You <strong>do NOT have</strong> a Contentful Account</h2>
         <p>You can get an account from <a href="https://www.contentful.com/" target="_blank">here</a>.</p>
