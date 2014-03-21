@@ -4,11 +4,11 @@
   "description": "Visualizer for Contentful Spaces",
   "main": "index.js",
   "scripts": {
-    "serve": "beefy . -- -d",
-    "build": "npm run bundle && npm run minify && npm run stats",
-    "bundle": "browserify . > bundle.js",
+    "serve": "beefy index.js -- -d -t reactify",
+    "bundle": "browserify index.js -t reactify > bundle.js",
     "minify": "uglifyjs bundle.js -m -c > bundle.min.js",
-    "stats": "ls -hl bundle.js bundle.min.js"
+    "stats": "ls -hl bundle.js bundle.min.js",
+    "build": "npm run bundle && npm run minify && npm run stats"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,10 @@
     "beefy": "^1.1.0"
   },
   "dependencies": {
-    "lodash-contrib": "^241.4.3"
+    "lodash-contrib": "^241.4.3",
+    "contentful": "^0.1.0",
+    "envify": "^1.2.1",
+    "react": "^0.10.0-rc1",
+    "bluebird": "^1.1.1"
   }
 }
