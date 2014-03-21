@@ -1,0 +1,31 @@
+{
+  "name": "cosmonaut",
+  "version": "0.0.0",
+  "description": "Visualizer for Contentful Spaces",
+  "main": "index.js",
+  "scripts": {
+    "serve": "beefy . -- -d",
+    "build": "npm run bundle && npm run minify && npm run stats",
+    "bundle": "browserify . > bundle.js",
+    "minify": "uglifyjs bundle.js -m -c > bundle.min.js",
+    "stats": "ls -hl bundle.js bundle.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:contentful/cosmonaut.git"
+  },
+  "author": "Stephan Seidt <stephan.seidt@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/contentful/cosmonaut/issues"
+  },
+  "devDependencies": {
+    "uglify-js": "^2.4.13",
+    "reactify": "^0.10.0",
+    "browserify": "^3.33.0",
+    "beefy": "^1.1.0"
+  },
+  "dependencies": {
+    "lodash-contrib": "^241.4.3"
+  }
+}
