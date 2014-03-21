@@ -31,7 +31,7 @@ var Cosmonaut = React.createClass({
     return (
       <div>
         <div className="music-controls">
-          <a href="http://www.youtube.com/watch?v=cSZ55X3X4pk" target="_blank">Carl Sagan - The Music of the Cosmos Television Series</a> <CosmosMusic videoId="cSZ55X3X4pk" autoplay={false} loop={true} />
+          <a href="http://www.youtube.com/watch?v=cSZ55X3X4pk" target="_blank">Cosmos Television Series</a> <CosmosMusic videoId="cSZ55X3X4pk" autoplay={false} loop={true} />
         </div>
         <Locations ref="router">
           <Location path="/" handler={StarChart} onNavComOpen={this.handleNavComOpen} />
@@ -91,10 +91,11 @@ var Help = React.createClass({
     return (
       <div className="star-chart">
         <h1 className="star-chart-title">HELP</h1>
+        <p><small>(These instructions will not help you when floating in outer space. Sorry.)</small></p>
         <p>So we want a <strong>Space ID</strong> and an <strong>API Key Access Token</strong> from you.</p>
         <p>You are wondering: "I certainily am <em>not</em> a rocket scientist. What is all that?"</p>
         <h2>INTERMISSION</h2>
-        <p>So there are' two possible choices for you:</p>
+        <p>So there are two possible choices for you:</p>
         <ol>
           <li>You have a Contentful account</li>
           <li>You <strong>do not</strong> have a Contentful account</li>
@@ -113,7 +114,7 @@ var Help = React.createClass({
         </ol>
         <h2>You <strong>do NOT have</strong> a Contentful Account</h2>
         <p>You can get an account from <a href="https://www.contentful.com/" target="_blank">here</a>.</p>
-        <p>Or use someone else's public Space and API Key, e.g., try "Fill in Contentful Example API" on the <Link href="/">Login page</Link>.</p>
+        <p>Or use a public Space and API Key, e.g., click "Try Example" on the <Link href="/">Login page</Link>.</p>
       </div>
     );
   }
@@ -136,6 +137,10 @@ var StarChart = React.createClass({
   fillExampleForm: function() {
     this.refs.spaceIdInput.getDOMNode().value = 'cfexampleapi';
     this.refs.accessTokenInput.getDOMNode().value = 'b4c0n73n7fu1';
+
+    setTimeout(function() {
+      this.handleSubmit();
+    }.bind(this), 500);
   },
 
   render: function() {
@@ -149,7 +154,7 @@ var StarChart = React.createClass({
           </div>
           <button className="star-chart-main-input">Engage</button>
         </form>
-        <a href="#" onClick={this.fillExampleForm}>Fill in Contentful Example API</a> / <Link href="/help">Space ID? Access Token? What?</Link>
+        <a href="#" onClick={this.fillExampleForm}>Try Example</a> / <Link href="/help">Space ID? Access Token? Help!</Link>
       </div>
     );
   }
@@ -176,6 +181,8 @@ var NavCom = React.createClass({
     }).then(function(state) {
       this.setState(state);
     }.bind(this));
+
+    this.state.client = client;
   },
 
   getInitialState: function() {
@@ -186,15 +193,16 @@ var NavCom = React.createClass({
 
   render: function() {
     var spaceName = _.getPath(this.state, ['space', 'name']);
+
     var contentTypes = _.map(this.state.contentTypes, function(contentType, index) {
       var color = getUniqueColor(this.state.contentTypes.length, index);
-      return <ContentType contentType={contentType} color={color} key={contentType.sys.id} />;
+      return <ContentType client={this.state.client} contentType={contentType} color={color} key={contentType.sys.id} />;
     }.bind(this));
 
     return (
-      <div>
+      <div className="nav-com">
         <h1>{spaceName}</h1>
-        <ul>{contentTypes}</ul>
+        {contentTypes}
       </div>
     );
   }
@@ -202,17 +210,22 @@ var NavCom = React.createClass({
 
 var ContentType = React.createClass({
   render: function() {
-    var fields = _.map(this.props.contentType.fields, function(field) {
-      return <li><span className="field-type-name">{field.type}</span> {field.name}</li>
+    var contentType = this.props.contentType;
+
+    var fields = _.map(contentType.fields, function(field) {
+      return (
+        <li>
+          <span className="content-type-field-name">{field.name}</span>
+          <code className="content-type-field-id">{field.id}</code>
+          <span className="content-type-field-type">{field.type}</span>
+        </li>
+      )
     });
+
     return (
-      <div>
-        <h1 style={{color: this.props.color}}>
-          {this.props.contentType.name}
-        </h1>
-        <ul>
-          {fields}
-        </ul>
+      <div className="nav-com-content-type">
+        <h2 style={{color: this.props.color}}>{contentType.name}</h2>
+        {fields}
       </div>
     );
   }
