@@ -33,7 +33,7 @@ var Cosmonaut = React.createClass({
         <div className="music-controls">
           <a href="http://www.youtube.com/watch?v=cSZ55X3X4pk" target="_blank">Cosmos Television Series</a> <CosmosMusic videoId="cSZ55X3X4pk" autoplay={false} loop={true} />
         </div>
-        <Locations ref="router">
+        <Locations hash ref="router">
           <Location path="/" handler={StarChart} onNavComOpen={this.handleNavComOpen} />
           <Location path="/help" handler={Help} />
           <Location path="/navcom/:spaceId/key/:accessToken" handler={NavCom} />
