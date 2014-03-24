@@ -4,9 +4,10 @@ Cosmonaut is an app for exploring the structure of Contentful Spaces.
 
 A Space is a container for content in
 [Contentful](https://www.contentful.com). Contentful is an API-based
-content-management system for web and mobile apps. The Content Model
-is the strucutore of a Space. It defines what kind of content can go
-into a Space and what the relationships between chunks of content are.
+content management system for web and mobile apps. The Content Model
+is the structure of a Space: The types and the rules of content. It
+defines what kind of content can go into a Space and what the
+relationships between chunks of content are.
 
 Cosmonaut is based on [React.js](http://facebook.github.io/react/) and
 uses [browserify](https://github.com/substack/node-browserify) for
