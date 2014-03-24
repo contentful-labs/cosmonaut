@@ -1,5 +1,7 @@
 # COSMONAUT
 
+[View demo](https://contentful.github.io/cosmonaut)
+
 ## Install
 
 ```
