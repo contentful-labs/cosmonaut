@@ -2,6 +2,8 @@
 
 Cosmonaut is an app for exploring the structure of Contentful Spaces.
 
+It was created as a project in Contentful's first hackathon.
+
 A Space is a container for content in
 [Contentful](https://www.contentful.com). Contentful is an API-based
 content management system for web and mobile apps. The Content Model
