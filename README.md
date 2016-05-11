@@ -15,7 +15,7 @@ Cosmonaut is based on [React.js](http://facebook.github.io/react/) and
 uses [browserify](https://github.com/substack/node-browserify) for
 bundling.
 
-## [View demo](https://contentful.github.io/cosmonaut)
+## [View demo](https://contentful-labs.github.io/cosmonaut)
 
 ## Install
 
